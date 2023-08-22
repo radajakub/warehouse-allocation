@@ -1,0 +1,25 @@
+\documentclass[./main.tex]{subfiles}
+
+\begin{document}
+
+\section{Conclusion}
+In this report we compared simple local search, basic evolution algorithm and custom memetic algorith.
+
+On simpler, smaller instances, the local search is better that the other two, because the search space is small enough and the algorithm has a chance to explore larger area and get to more promising solutions.
+On harder instances, this does not hold and the local search does not provide good results.
+Big advantage of local search is its speed.
+
+The evolution algorithm needs more evaluations, but it eventually overcomes local search or at least gets on the same level.
+On bigger instances, it starts to struggle from stagnation of population and cannot further improve.
+Its huge disadvantage is, that it is by far the slowest from these three (time measured on the same number of evaluations).
+
+The memetic algorithm quite struggles on smaller instances, as it cannot use the full potential of local search, but wastes a lot of evaluations on it, so it cannot breed as much.
+However, on large and hard instances, it is superior to both other algorithms.
+But, it needs more evaluations to overcome them, which is a big disadvatage.
+On the other hand, it is faster than evolution algorithm on the same number of evaluations.
+Also, it converges monotically while tightening interquartile range, so it is more likely to find similar solutions.
+
+None of these algorithms struggles from being unable to find valid solution as it is usually quickly found in the first few iterations.
+
+\end{document}
+

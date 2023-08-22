@@ -1,0 +1,73 @@
+\documentclass[./main.tex]{subfiles}
+
+\begin{document}
+
+\section{Problem description}
+There are $N$ warehouses on different locations, each warehouse $w$ has a set-up price $s_w$ and a capacity $cap_w$.
+Also, there are $M$ customers and each customer $c$ damands $d_c$ goods.
+There is defined delivery cost $t_{cw}$ between each pair of customer and warehouse.
+
+The goal is to assign one warehouse to each customer, while satisfying their demands and minimizing the overall cost.
+
+\begin{equation}
+    \begin{array}{ll @{} ll}
+        \text{minimize}   & f = \displaystyle\sum_{w = 1}^{N}(I(|a_w| > 0) \cdot s_w + \sum_{c \in a_w} t_{cw}) & \\
+        \text{subject to} & \displaystyle\sum_{c \in a_w} d_c \leq cap_w & \forall w = 1, \dots, N \\
+                          & \displaystyle\sum_{w = 1}^{N} I(c \in a_w) = 1 & \forall c = 1, \dots, M \\
+    \end{array}
+\end{equation}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c | c}
+        problem & optimum value \\
+        \hline
+        wl\_16\_1 & 976738.625 \\
+        wl\_25\_2 & 796648.438 \\
+        wl\_50\_1 & 793439.562 \\
+        wl\_100\_4 & 17765201.949 \\
+        wl\_200\_1 & 2686.479 \\
+        wl\_500\_1 & 2608.148 \\
+        wl\_1000\_1 & 5283.757 \\
+        wl\_2000\_1 & 10069.803 \\
+    \end{tabular}
+    \caption{Problem instances}
+\end{table}
+
+\section{Representation and fitness function}
+
+\textbf{Candidate representation}
+
+Customers are represented as numbers $c = 1, 2, \dots, M$ and warehouses as numbers $w = 1, 2, \dots, N$.
+Each candidate solution is represented as an integer vector of length $M$.
+On each position $c$ is a number of warehouse $w$ which was assigned to customer $c$.
+
+\vspace{0.5cm}
+\begin{center}
+    \begin{tabular}{| c | c | c | c | c |}
+        \multicolumn{1}{c}{$1$} & \multicolumn{1}{c}{$2$} & \multicolumn{1}{c}{$\cdots$} & \multicolumn{1}{c}{$M - 1$} & \multicolumn{1}{c}{$M$} \\
+        \hline
+        $w_1$ & $w_2$ & $\cdots$ & $w_{M-1}$ & $w_M$ \\
+        \hline
+    \end{tabular}
+\end{center}
+\vspace{0.5cm}
+
+Each candidate solution also holds excesses of individual capacities as a vector of length $N$, also as fitness function and constraint violation sum.
+
+\textbf{Fitness function}
+
+Fitness function is split into two parts: overall cost and constraint violations.
+The overall cost is computed according to problem fitness function as specified in previous section.
+Constraint violations are computed as absolute value of difference between capacity and accumulated demand after assiging the warehouses to customers.
+It is useful this way, because it allows to use two different comparison operators.
+
+First operator compares two candidates by their constraint violations and prefers the less violating.
+If both candidates are feasible, only then they are compared by their fitness e.g. overall cost.
+This operator is used mostly in finding and comparing \textit{bsf} candidates.
+
+Second operator uses weighted sum of these two properties. It is usually managed by multipling constraing violations with some large number ($1000$ in my case) and adding the result with fitness.
+This operator showed a bit better results in evolution operators as it can keep some infeasible but otherwise really fit candidates in the population.
+
+\end{document}
+

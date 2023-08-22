@@ -1,0 +1,77 @@
+objective: 3.71968e+07
+constraint violations: 0
+2.0938
+iterations: 1600
+evaluations: 1000140
+time: 33961ms
+
+objective: 3.51853e+07
+constraint violations: 0
+1.98058
+iterations: 1606
+evaluations: 1000160
+time: 33828ms
+
+objective: 3.336e+07
+constraint violations: 0
+1.87783
+iterations: 1612
+evaluations: 1000480
+time: 34141ms
+
+objective: 3.44455e+07
+constraint violations: 0
+1.93893
+iterations: 1626
+evaluations: 1000660
+time: 33957ms
+
+objective: 3.18648e+07
+constraint violations: 0
+1.79366
+iterations: 1602
+evaluations: 1000580
+time: 33946ms
+
+objective: 3.33199e+07
+constraint violations: 0
+1.87557
+iterations: 1600
+evaluations: 1000140
+time: 34385ms
+
+objective: 3.63054e+07
+constraint violations: 0
+2.04363
+iterations: 1616
+evaluations: 1000160
+time: 33939ms
+
+objective: 3.3374e+07
+constraint violations: 0
+1.87862
+iterations: 1589
+evaluations: 1000220
+time: 33954ms
+
+objective: 3.65066e+07
+constraint violations: 0
+2.05495
+iterations: 1621
+evaluations: 1000060
+time: 34192ms
+
+objective: 3.3433e+07
+constraint violations: 0
+1.88194
+iterations: 1633
+evaluations: 1000000
+time: 34174ms
+
+objective: 3.36279e+07
+constraint violations: 0
+1.89291
+iterations: 1607
+evaluations: 1000480
+time: 31917ms
+
